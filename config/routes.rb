@@ -1,7 +1,8 @@
 Vilrol::Application.routes.draw do
   resources :offers
-
   resources :users
+  resources :providers
+  resources :purchases
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
