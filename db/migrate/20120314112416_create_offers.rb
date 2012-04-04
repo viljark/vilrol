@@ -6,6 +6,7 @@ class CreateOffers < ActiveRecord::Migration
       t.text :description
       t.integer :count, :default => 0, :null => false
       t.decimal :price, :scale => 6, :precision => 2
+      t.date :start_date
       t.date :end_date
       t.timestamps
     end

@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20120315170909) do
     t.text     "description"
     t.integer  "count",                                     :default => 0, :null => false
     t.decimal  "price",       :precision => 2, :scale => 6
+    t.date     "start_date"
     t.date     "end_date"
     t.datetime "created_at",                                               :null => false
     t.datetime "updated_at",                                               :null => false
@@ -40,13 +41,14 @@ ActiveRecord::Schema.define(:version => 20120315170909) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username",                               :null => false
+    t.string   "username",                                  :null => false
     t.string   "first_name"
     t.string   "last_name"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.boolean  "is_provider",            :default => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.timestamps
+      t.boolean :is_provider, :default => false
     end
   end
 end

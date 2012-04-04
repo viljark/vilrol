@@ -15,26 +15,41 @@
 					<li class="active"><a href="/">Home</a></li>
 					<li><a href="#">Link</a></li>
 					<li><a href="#">Link</a></li>
+                                         <li class="dropdown" id ="Menu1">
+                                          <a class="dropdown-toggle" data-toggle="dropdown" href ="#Menu1">
+                                            All offers
+                                            <b class="caret"></b>
+                                          </a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="#">Ended offers</a></li>
+                                            <li><a href="#">Popluar</a></li>
+                                          </ul>
+                                         </li>
+                                        <% if user_signed_in? -%>
+                                          <ul class="nav pull-right">
+                                            <li class="dropdown" id ="Menu2">
+                                              <a class="dropdown-toggle" data-toggle="dropdown" href ="#Menu2">
+                                                Account
+                                                <b class="caret"></b>
+                                              </a>
+                                         <% end -%>
+                                             <ul class="dropdown-menu">
+                                              <li><a href="#">Profile</a></li>
+                                              <li><a href="#">Settings</a></li>
+                                              <li class="divider"></li>
+                                              <li><a href="/signout">Logout</a></li>
+                                             </ul>
+                                            </li>
+                                          <% if user_signed_in? == false %>
+                                            <a class="pull-right btn btn-primary btn-medium" href="/signin" >Sigin in</a>
+                                          <% end %>
+                                         </ul>
 				</ul>
 			</div>
 	  </div>
 	</div>
 	<div class="main">
-		<div class="side-navigation">
-			<div class="well" style="padding: 8px 0;">
-	        <ul class="nav nav-list">
-	          <li class="nav-header">Navigation</li>
-	          <li class="active"><a href="#"><i class="icon-white icon-home"></i> Home</a></li>
-	          <li><a href="#"><i class="icon-book"></i> Offers</a></li>
-	          <li><a href="#"><i class="icon-pencil"></i> Popular</a></li>
-	          <li class="nav-header">My user</li>
-	          <li><a href="#"><i class="icon-user"></i> Profile</a></li>
-	          <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
-	          <li class="divider"></li>
-	          <li><a href="#"><i class="icon-flag"></i> Help</a></li>
-	        </ul>
-	      </div>
-		</div>
+
 		<div class="wrap">
 			<div class="content well">
 				<p class="notice"><%= notice %></p>

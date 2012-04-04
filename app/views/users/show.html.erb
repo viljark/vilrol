@@ -19,6 +19,10 @@
   <b>Email:</b>
   <%= @user.email %>
 </p>
+<p>
+  <b>Become provider:</b>
+  <%= @user.is_provider %>
+</p>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

@@ -1,6 +1,7 @@
 Vilrol::Application.routes.draw do
-  devise_for :users
+  get "home/index"
 
+  devise_for :users
   resources :offers
   resources :users
   resources :providers
@@ -55,19 +56,20 @@ Vilrol::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
- root :to => 'welcome#index'
+ root :to => 'home#index'
   
   #Re routes for login and logout
   devise_for :users, :skip => [:sessions]
   as :user do
     get 'signin' => 'devise/sessions#new', :as => :new_user_session
+    get 'register' => 'devise/registrations#new', :as => :new_user_registraiton_path
     post 'signin' => 'devise/sessions#create', :as => :user_session
     match 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session,
       :via => Devise.mappings[:user].sign_out_via
   end
   #Re-route for registration page
   devise_scope :user do
-    get "/register" => "devise/registrations#new"
+    
   end
 
   # See how all your routes lay out with "rake routes"
