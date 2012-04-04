@@ -10,50 +10,53 @@
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container">
-				<a class="brand" href="/">VILROL</a>
 				<ul class="nav">
-					<li class="active"><a href="/">Home</a></li>
+				<a class="brand" href="/">VILROL</a>
+					<li><a href="/">Home</a></li>
 					<li><a href="#">Link</a></li>
 					<li><a href="#">Link</a></li>
-                                         <li class="dropdown" id ="Menu1">
-                                          <a class="dropdown-toggle" data-toggle="dropdown" href ="#Menu1">
-                                            All offers
-                                            <b class="caret"></b>
-                                          </a>
-                                          <ul class="dropdown-menu">
-                                            <li><a href="#">Ended offers</a></li>
-                                            <li><a href="#">Popluar</a></li>
-                                          </ul>
-                                         </li>
-                                        <% if user_signed_in? -%>
-                                          <ul class="nav pull-right">
-                                            <li class="dropdown" id ="Menu2">
-                                              <a class="dropdown-toggle" data-toggle="dropdown" href ="#Menu2">
-                                                Account
-                                                <b class="caret"></b>
-                                              </a>
-                                         <% end -%>
-                                             <ul class="dropdown-menu">
-                                              <li><a href="#">Profile</a></li>
-                                              <li><a href="#">Settings</a></li>
-                                              <li class="divider"></li>
-                                              <li><a href="/signout">Logout</a></li>
-                                             </ul>
-                                            </li>
-                                          <% if user_signed_in? == false %>
-                                            <a class="pull-right btn btn-primary btn-medium" href="/signin" >Sigin in</a>
-                                          <% end %>
-                                         </ul>
+			 		<li class="dropdown" id ="Menu1">
+		 	 			<a class="dropdown-toggle" data-toggle="dropdown" href ="#Menu1">
+							Offers
+							<b class="caret"></b>
+				  		</a>
+					  <ul class="dropdown-menu">
+						<li><a href="/offers">All offers</a></li>
+						<li><a href="#">Popluar</a></li>
+						<li><a href="#">Ended offers</a></li>
+					  </ul>
+					 </li>
+					<% if user_signed_in? -%>
+					<li class="account dropdown" id ="Menu2">
+					  <a class="dropdown-toggle" data-toggle="dropdown" href ="#Menu2">
+					Account
+					<b class="caret"></b>
+					  </a>
+					 <ul class="dropdown-menu">
+					  <li><a href="#">Profile</a></li>
+					  <li><a href="#">Settings</a></li>
+					  <li class="divider"></li>
+					  <li><a href="/signout">Logout</a></li>
+					 </ul>
+					</li>
+				 <% end -%>
+			 	<% if user_signed_in? == false %>
+					<a class="pull-left btn btn-primary btn-medium" href="/signin" >Sign in</a>
+					<a class="pull-right btn btn-warning btn-medium" href="/register" >Register</a>
+			  	<% end %>
 				</ul>
 			</div>
 	  </div>
 	</div>
-	<div class="main">
-
+	<div class="main well">
 		<div class="wrap">
-			<div class="content well">
+			<div class="content">
+				<% if notice != nil%>
 				<p class="notice"><%= notice %></p>
+				<% end-%>
+				<% if alert != nil%>
 				<p class="alert"><%= alert %></p>
+				<% end-%>
 				<%= yield %>
 			</div>
 		</div>

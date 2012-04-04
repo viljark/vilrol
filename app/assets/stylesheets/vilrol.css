@@ -13,9 +13,16 @@ BODY {
 	margin-right: 10px;
 }
 .wrap {
-	width: 780px;
-	float: left;
+	width: 720px;
 	margin-left: 10px;
 }
 .content {
+}
+
+/* Overriding bootstrap */
+.navbar .nav {
+	width: 100%;
+}
+.navbar .account {
+	float: right!important;
 }
