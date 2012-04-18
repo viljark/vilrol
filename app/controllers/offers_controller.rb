@@ -1,4 +1,9 @@
 class OffersController < ApplicationController
+  
+  before_filter do
+    authenticate_user! rescue redirect_to auth_url
+  end
+  
   # GET /offers
   # GET /offers.json
   def index
@@ -24,11 +29,15 @@ class OffersController < ApplicationController
   # GET /offers/new
   # GET /offers/new.json
   def new
-    @offer = Offer.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @offer }
+    if current_user.is_provider
+      @offer = Offer.new
+  
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @offer }
+      end
+    else
+      redirect_to "/offers", :alert => "In order to create offers, you have to become provider"
     end
   end
 
@@ -80,4 +89,5 @@ class OffersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 end

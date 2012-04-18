@@ -1,4 +1,8 @@
 class ProvidersController < ApplicationController
+  before_filter do
+    authenticate_user! rescue redirect_to auth_url
+  end
+  
   # GET /providers
   # GET /providers.json
   def index

@@ -1,4 +1,8 @@
 class PurchasesController < ApplicationController
+  before_filter do
+    authenticate_user! rescue redirect_to auth_url
+  end
+  
   # GET /purchases
   # GET /purchases.json
   def index

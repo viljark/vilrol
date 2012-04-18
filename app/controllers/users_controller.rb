@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  before_filter do
+    authenticate_user! rescue redirect_to auth_url
+  end
+  
   # GET /users
   # GET /users.json
   def index
