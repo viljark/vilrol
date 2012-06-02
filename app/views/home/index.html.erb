@@ -1,2 +1,13 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+
+<% @offers.each do |offer| %>
+   <div class="dealdata">
+    <h3><%= offer.name %></h3>
+    
+<p class="description"><%= offer.description%></p>    
+<ul class="unstyled">
+   <li><p>Oksjon lõppeb:<span class="bold"> <%= offer.end_date %> </span></p> </li>
+   <li><p>Järele jäänud:<span class="bold"><%= offer.count%></span></p></li>
+   <li><a class="btn btn-success" href="offers/<%=  offer.id %>/buy" ><i class="icon-shopping-cart icon-white"></i> Buy</a></li>
+</ul>
+</div>
+<% end %>
