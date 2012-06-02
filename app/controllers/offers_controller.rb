@@ -90,4 +90,14 @@ class OffersController < ApplicationController
     end
   end
   
+  #popluar offers
+  def popular
+    @offers = Offer.all
+    
+    respond_to do |format|
+      format.html
+      format.json { head :no_content }
+    end
+  end
+  
 end

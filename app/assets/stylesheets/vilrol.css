@@ -15,6 +15,7 @@ BODY {
 .wrap {
 	width: 720px;
 	margin-left: 10px;
+        height: 100%;
 }
 .content {
 }
@@ -26,3 +27,19 @@ BODY {
 .navbar .account {
 	float: right!important;
 }
+/* home leht*/
+.dealdata {
+    float: left;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.description {
+    word-wrap: break-word;
+    width: 200px;
+}
+
