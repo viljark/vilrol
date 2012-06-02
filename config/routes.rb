@@ -2,11 +2,14 @@ Vilrol::Application.routes.draw do
   get "home/index"
 
   devise_for :users
-  resources :offers
+  resources :offers do
+    resources :buy
+  end
   resources :users
   resources :providers
   resources :purchases
-
+  resources :buy
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -22,21 +22,21 @@
 				  		</a>
 					  <ul class="dropdown-menu">
 						<li><a href="/offers">All offers</a></li>
-						<li><a href="#">Popluar</a></li>
+						<li><a href="#">Popular</a></li>
 						<li><a href="#">Ended offers</a></li>
 					  </ul>
 					 </li>
 					<% if user_signed_in? -%>
 					<li class="account dropdown" id ="Menu2">
 					  <a class="dropdown-toggle" data-toggle="dropdown" href ="#Menu2">
-					Account
-					<b class="caret"></b>
+						<span>Account</span>
+						<b class="caret"></b>
 					  </a>
 					 <ul class="dropdown-menu">
-					  <li><a href="/users/edit">Profile</a></li>
-					  <li><a href="#">Settings</a></li>
+					  <li><a href="/users/edit"><i class="icon-user"></i> Profile</a></li>
+					  <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
 					  <li class="divider"></li>
-					  <li><a href="/signout">Logout</a></li>
+					  <li><a href="/signout"><i class="icon-off"></i> Logout</a></li>
 					 </ul>
 					</li>
 				 <% end -%>
@@ -52,10 +52,14 @@
 		<div class="wrap">
 			<div class="content">
 				<% if notice != nil%>
-				<p class="notice"><%= notice %></p>
+				<div class="alert alert-success">
+					<span><%= notice %></span>
+				</div>
 				<% end-%>
 				<% if alert != nil%>
-				<p class="alert"><%= alert %></p>
+				<div class="alert alert-error">
+					<span><%= alert %></span>
+				</div>
 				<% end-%>
 				<%= yield %>
 			</div>
