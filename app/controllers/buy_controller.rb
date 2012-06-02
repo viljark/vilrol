@@ -23,15 +23,17 @@ class BuyController < ApplicationController
     quantity = params[:buy_quantity].to_i
     respond_to do |format|
       if @offer.count >= quantity && quantity > 0
-        result = Offer.update(@offer_id, :count => (@offer.count - quantity))
-        if result
-          logger.info(result.errors.inspect)
-          format.html { redirect_to @offer, notice: 'Purchase was successful' }
+        @result = Offer.update(@offer_id, :count => (@offer.count - quantity))
+        if @result && @result.valid?
+          
+          @purchase = Purchase.create!(:user_id => current_user.id, :offer_id => @offer_id, :quantity => quantity)
+          logger.info(@result.errors.inspect)
+          format.html { redirect_to @offer, notice: "Purchase was successful!" }
         else
-          format.html { redirect_to @offer, alert: 'Purchase failed, please check your input.' }
+          format.html { redirect_to @offer, alert: 'Purchase failed, the item is no longer available.' }
         end
       else
-        format.html { redirect_to @offer, alert: 'Purchase failed, offers out of stock.' }
+        format.html { redirect_to @offer, alert: 'Purchase failed, we\'re out of offers.' }
       end
     end
   end
