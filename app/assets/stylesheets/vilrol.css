@@ -47,3 +47,8 @@ BODY {
     width: 200px;
 }
 
+#logged-in-as {
+	float: right;
+	margin-top: 12px;
+	color: #ddd;
+}
