@@ -1,7 +1,7 @@
 <% @offers.each do |offer| %>
 <div class="dealdata">
-	<div class="you-save"><span>-50%</span></div>
-	<h3><%= offer.name %></h3>
+	<div class="corner"><span>-50%</span></div>
+	<h3 title="<%= offer.name%>"><%= offer.name %></h3>
 	<p>
 		<span>Hind: <strong class="price">€<%= offer.price%></strong></span>
 	</p>

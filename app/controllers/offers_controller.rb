@@ -99,7 +99,8 @@ class OffersController < ApplicationController
   #popluar offers
   def popular
     @offers = Offer.all
-    
+    @purchases = Purchase.select("")
+    @prc = Purchase.select("sum(quantity) as total_quantity, offer_id").group("offer_id")
     respond_to do |format|
       format.html
       format.json { head :no_content }

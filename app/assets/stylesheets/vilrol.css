@@ -54,7 +54,7 @@ BODY {
 	color: #666;
 }
 
-.dealdata .you-save {
+.dealdata .corner {
 	display: block;
 	width: 0;
 	height: 0;
@@ -67,7 +67,12 @@ BODY {
 	border-left: 40px solid transparent;
 	border-top-right-radius: 5px;
 }
-.dealdata .you-save span {
+
+.corner.index {
+		border-top: 40px solid rgba(200,255,200,0.7);
+	border-right: 40px solid rgba(200,255,200,0.7);
+}
+.dealdata .corner span {
 	display: block;
 	margin-top: -25px;
 	margin-left: -5px;
@@ -76,12 +81,22 @@ BODY {
 	font-weight: bold;
 }
 
-.dealdata:hover .you-save span {
+.dealdata:hover .corner span {
 	color: rgba(255,255,255,0.9);
 }
-.dealdata:hover .you-save {
+.dealdata:hover .corner.index {
+	border-top: 40px solid rgba(83,163,83,0.9);
+	border-right: 40px solid rgba(83,163,83,0.9);
+}
+.dealdata:hover .corner {
 	border-top: 40px solid rgba(255,50,50,0.9);
 	border-right: 40px solid rgba(255,50,50,0.9);
+}
+
+.dealdata H3 {
+	min-height: 54px;
+	max-height: 54px;
+	overflow: hidden;
 }
 
 .bold {
