@@ -29,6 +29,7 @@ BODY {
 }
 /* home leht*/
 .dealdata {
+	position: relative;
     float: left;
     width: 200px;
     padding: 10px;
@@ -36,6 +37,51 @@ BODY {
 	background: #fafafa;
 	margin: 5px;
 	box-shadow: 1px 1px 4px #ddd;
+}
+
+.dealdata:hover {
+	box-shadow: 1px 1px 5px #aaa;
+	background: #fcfcfc;
+}
+
+.dealdata .price {
+	font-size: 16px;
+	color: #2F96B4;
+}
+
+.dealdata .availability {
+	font-size: 11px;
+	color: #666;
+}
+
+.dealdata .you-save {
+	display: block;
+	width: 0;
+	height: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	border-top: 40px solid rgba(255,233,233,0.7);
+	border-right: 40px solid rgba(255,233,233,0.7);
+	border-bottom: 40px solid transparent;
+	border-left: 40px solid transparent;
+	border-top-right-radius: 5px;
+}
+.dealdata .you-save span {
+	display: block;
+	margin-top: -25px;
+	margin-left: -5px;
+	color: rgba(255,255,255,0.7);
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.dealdata:hover .you-save span {
+	color: rgba(255,255,255,0.9);
+}
+.dealdata:hover .you-save {
+	border-top: 40px solid rgba(255,50,50,0.9);
+	border-right: 40px solid rgba(255,50,50,0.9);
 }
 
 .bold {

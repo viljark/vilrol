@@ -1,17 +1,17 @@
 <% @offers.each do |offer| %>
 <div class="dealdata">
+	<div class="you-save"><span>-50%</span></div>
 	<h3><%= offer.name %></h3>
-	<p class="description">
-		<%= offer.description%>
+	<p>
+		<span>Hind: <strong class="price">€<%= offer.price%></strong></span>
 	</p>
 	<ul class="unstyled">
 		<li>
-			<span>Oksjon lõpeb: <strong> <%= offer.end_date %> </strong></span>
+			<span class="availability">Aega jäänud: <strong class="end-date" data-end-date="<%= offer.end_date %>"> </strong></span>
 		</li>
 		<li>
-			<p><span>Pakkumisi alles: <strong><%= offer.count%></strong></span></p>
+			<p class="availability"><span>Pakkumisi alles: <strong><%= offer.count%></strong></span></p>
 		</li>
-		<li class="divider"></li>
 		<li>
 			<a class="btn btn-success" href="offers/<%= offer.id %>/buy" ><i class="icon-shopping-cart icon-white"></i> Buy</a>
 			<a class="btn btn-info" href="offers/<%= offer.id %>"><i class="icon-info-sign icon-white"></i> More info</a>
