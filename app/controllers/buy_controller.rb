@@ -1,4 +1,8 @@
 class BuyController < ApplicationController
+  before_filter do
+    authenticate_user! rescue redirect_to auth_url
+  end
+  
   # GET /offers
   def index
     @offer_id = params[:offer_id]

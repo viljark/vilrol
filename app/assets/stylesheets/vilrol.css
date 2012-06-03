@@ -31,7 +31,11 @@ BODY {
 .dealdata {
     float: left;
     width: 200px;
-    margin-right: 10px;
+    padding: 10px;
+	border-radius: 5px;
+	background: #fafafa;
+	margin: 5px;
+	box-shadow: 1px 1px 4px #ddd;
 }
 
 .bold {

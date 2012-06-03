@@ -7,7 +7,11 @@ class OffersController < ApplicationController
   # GET /offers
   # GET /offers.json
   def index
-    @offers = Offer.all
+    if params["filter"] && params["filter"] == "mine"
+      @offers = Offer.find_all_by_provider_id(current_user.id)
+    else
+      @offers = Offer.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -37,7 +41,7 @@ class OffersController < ApplicationController
         format.json { render json: @offer }
       end
     else
-      redirect_to "/offers", :alert => "In order to create offers, you have to become provider"
+      redirect_to "/offers", :alert => "In order to create offers, you have to become provider."
     end
   end
 
@@ -49,7 +53,9 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.json
   def create
-    @offer = Offer.new(params[:offer])
+    p = params[:offer]
+    p["provider_id"] = current_user.id
+    @offer = Offer.new(p)
 
     respond_to do |format|
       if @offer.save

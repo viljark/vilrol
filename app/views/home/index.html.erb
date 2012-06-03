@@ -1,13 +1,21 @@
-
 <% @offers.each do |offer| %>
-   <div class="dealdata">
-    <h3><%= offer.name %></h3>
-    
-<p class="description"><%= offer.description%></p>    
-<ul class="unstyled">
-   <li><p>Oksjon lõppeb:<span class="bold"> <%= offer.end_date %> </span></p> </li>
-   <li><p>Järele jäänud:<span class="bold"><%= offer.count%></span></p></li>
-   <li><a class="btn btn-success" href="offers/<%=  offer.id %>/buy" ><i class="icon-shopping-cart icon-white"></i> Buy</a></li>
-</ul>
+<div class="dealdata">
+	<h3><%= offer.name %></h3>
+	<p class="description">
+		<%= offer.description%>
+	</p>
+	<ul class="unstyled">
+		<li>
+			<span>Oksjon lõpeb: <strong> <%= offer.end_date %> </strong></span>
+		</li>
+		<li>
+			<p><span>Pakkumisi alles: <strong><%= offer.count%></strong></span></p>
+		</li>
+		<li class="divider"></li>
+		<li>
+			<a class="btn btn-success" href="offers/<%= offer.id %>/buy" ><i class="icon-shopping-cart icon-white"></i> Buy</a>
+			<a class="btn btn-info" href="offers/<%= offer.id %>"><i class="icon-info-sign icon-white"></i> More info</a>
+		</li>
+	</ul>
 </div>
-<% end %>
+<% end %> 

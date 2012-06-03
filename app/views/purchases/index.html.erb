@@ -2,24 +2,20 @@
 
 <table>
   <tr>
-    <th>User</th>
     <th>Offer</th>
-    <th></th>
+    <th>Date</th>
+    <th>Quantity</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @purchases.each do |purchase| %>
   <tr>
-    <td><%= purchase.user_id %></td>
-    <td><%= purchase.offer_id %></td>
+    <td><%= Offer.find_by_id(purchase.offer_id).name %></td>
+    <td><%= purchase.created_at.strftime("%d.%m.%Y %H:%M") %></td>
+    <td><%= purchase.quantity %></td>
     <td><%= link_to 'Show', purchase %></td>
-    <td><%= link_to 'Edit', edit_purchase_path(purchase) %></td>
     <td><%= link_to 'Destroy', purchase, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Purchase', new_purchase_path %>
