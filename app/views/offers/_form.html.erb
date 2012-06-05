@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-
   <div class="field">
-    <%= f.label :name %>
+  	<label for="offer_name">Title of your offer</label>
     <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <textarea cols="50" id="offer_description" name="offer[description]" rows="10"></textarea>
   </div>
   <div class="field">
     <%= f.label :count %>
-    <%= f.number_field :count %>
+    <%= f.number_field :count, :class => "input input-mini" %>
   </div>
   <div class="field">
     <%= f.label :price %>
-    <%= f.text_field :price %>
+    <strong>€</strong>
+    <input id="offer_price" class="input-mini" name="offer[price]" type="text">
   </div>
   <div class="field">
     <%= f.label :start_date %>
@@ -37,6 +37,6 @@
     <%= f.date_select :end_date %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create", :class => "btn btn-info" %>
   </div>
 <% end %>

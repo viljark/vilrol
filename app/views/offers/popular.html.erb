@@ -1,18 +1,21 @@
 <h2>Popular offers</h2>
-<p>Here you can see the most popular currently active offers.</p>
+<p>
+	Here you can see the most popular currently active offers.
+</p>
 <!-- TODO: create more efficient query to retrieve the offers -->
 <% @prc.each_with_index do |prc, index| %>
-	<% offer =  Offer.find(prc.offer_id)%>
-	<div class="dealdata">
-	<div class="corner index"><span>#<%=index + 1%></span></div>
+<% offer =  Offer.find(prc.offer_id)%>
+<% if offer.end_date >= Date.today%>
+<div class="dealdata">
+	<div class="corner index">
+		<span>#<%=index + 1%></span>
+	</div>
 	<h3 title="<%= offer.name%>"><%= offer.name %></h3>
-	<span><strong class="badge badge-warning"><%= prc.total_quantity%></strong> 
-		<% if prc.total_quantity > 1 %>
+	<span><strong class="badge badge-warning"><%= prc.total_quantity%></strong> <% if prc.total_quantity > 1 %>
 		pakkumist ostetud
 		<% else-%>
 		pakkumine ostetud
-		<% end-%>
-		</span>
+		<% end-%> </span>
 	<p>
 		<span>Hind: <strong class="price">€<%= offer.price%></strong></span>
 	</p>
@@ -21,7 +24,9 @@
 			<span class="availability">Aega jäänud: <strong class="end-date" data-end-date="<%= offer.end_date %>"> </strong></span>
 		</li>
 		<li>
-			<p class="availability"><span>Pakkumisi alles: <strong><%= offer.count%></strong></span></p>
+			<p class="availability">
+				<span>Pakkumisi alles: <strong><%= offer.count%></strong></span>
+			</p>
 		</li>
 		<li>
 			<a class="btn btn-success" href="offers/<%= offer.id %>/buy" ><i class="icon-shopping-cart icon-white"></i> Buy</a>
@@ -29,4 +34,5 @@
 		</li>
 	</ul>
 </div>
+<% end %>
 <% end %>

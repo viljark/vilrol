@@ -1,21 +1,20 @@
-<h1>Listing purchases</h1>
+<h2>Your purchases</h2>
 
-<table>
+<table class="table table-striped table-bordered table-condensed">
   <tr>
     <th>Offer</th>
     <th>Date</th>
     <th>Quantity</th>
-    <th></th>
-    <th></th>
+    <th>Cost</th>
   </tr>
 
 <% @purchases.each do |purchase| %>
   <tr>
-    <td><%= Offer.find_by_id(purchase.offer_id).name %></td>
+    <td><% offer = Offer.find_by_id(purchase.offer_id) %><%= offer.name %></td>
     <td><%= purchase.created_at.strftime("%d.%m.%Y %H:%M") %></td>
     <td><%= purchase.quantity %></td>
-    <td><%= link_to 'Show', purchase %></td>
-    <td><%= link_to 'Destroy', purchase, confirm: 'Are you sure?', method: :delete %></td>
+    <td>€<%= purchase.quantity * offer.price %></td>
+    <td><a class="btn btn-info btn-mini" href="<%= url_for purchase %>">Details</a></td>
   </tr>
 <% end %>
 </table>

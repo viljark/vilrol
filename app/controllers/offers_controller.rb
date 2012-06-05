@@ -10,7 +10,7 @@ class OffersController < ApplicationController
     if params["filter"] && params["filter"] == "mine"
       @offers = Offer.find_all_by_provider_id(current_user.id)
     else
-      @offers = Offer.all
+      @offers = Offer.where("end_date >= ?", Date.today)
     end
 
     respond_to do |format|
@@ -47,7 +47,12 @@ class OffersController < ApplicationController
 
   # GET /offers/1/edit
   def edit
-    @offer = Offer.find(params[:id])
+      @offer = Offer.find(params[:id])
+    if current_user.id != @offer.provider_id 
+      respond_to do |format|
+        format.html { redirect_to offers_url, alert: 'You do not have permissions to do that!' }
+      end 
+    end
   end
 
   # POST /offers
@@ -99,8 +104,7 @@ class OffersController < ApplicationController
   #popluar offers
   def popular
     @offers = Offer.all
-    @purchases = Purchase.select("")
-    @prc = Purchase.select("sum(quantity) as total_quantity, offer_id").group("offer_id")
+    @prc = Purchase.select("sum(quantity) as total_quantity, offer_id").group("offer_id").order("total_quantity DESC")
     respond_to do |format|
       format.html
       format.json { head :no_content }

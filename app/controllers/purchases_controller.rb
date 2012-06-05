@@ -18,11 +18,15 @@ class PurchasesController < ApplicationController
   # GET /purchases/1.json
   def show
     @purchase = Purchase.find(params[:id])
-
+    @offer = Offer.find(@purchase.offer_id)
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @purchase }
+    if current_user.id == @purchase.user_id 
+        format.html # show.html.erb
+        format.json { render json: @purchase }
+    else
+       format.html { redirect_to purchases_url, alert: 'You only can view your purchases!' }    
     end
+      end
   end
 
 
